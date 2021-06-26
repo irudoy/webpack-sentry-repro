@@ -6,10 +6,10 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@sentry/webpack-plugin": "^1.14.2",
-    "html-webpack-plugin": "^5.3.1",
-    "webpack": "^5.27.2",
-    "webpack-cli": "^4.5.0"
+    "@sentry/webpack-plugin": "1.15.1",
+    "html-webpack-plugin": "5.3.2",
+    "webpack": "5.40.0",
+    "webpack-cli": "4.7.2"
   },
   "scripts": {
     "start": "rm -rf dist && webpack"

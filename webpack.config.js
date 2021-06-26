@@ -1,7 +1,16 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const SentryPlugin = require('@sentry/webpack-plugin')
+
+class InjectEntryPlugin {
+  apply(compiler) {
+    new compiler.webpack.EntryPlugin(compiler.context, path.resolve('./dummy.entry.js'), {
+        name: undefined,
+    }).apply(compiler);
+  }
+}
 
 module.exports = {
+  mode: 'production',
   entry: {
     master: {
       import: './master.js',
@@ -19,14 +28,6 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
-    new SentryPlugin({
-        dryRun: true,
-        authToken: 'authToken',
-        url: 'https://example.com/',
-        org: 'org',
-        project: 'project',
-        release: 'release',
-        include: './dist',
-    })
+    new InjectEntryPlugin(),
   ]
 }
